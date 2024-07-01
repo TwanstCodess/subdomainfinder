@@ -3,7 +3,6 @@ import pyfiglet
 import json 
 import colorama
 from colorama import Fore, Style
-
 def find_sub_domains(domain):
     found_sub_domains = []
 
