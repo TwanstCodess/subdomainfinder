@@ -1,6 +1,8 @@
 import requests
 import pyfiglet
 import json 
+import colorama
+from colorama import Fore, Style
 
 def find_sub_domains(domain):
     found_sub_domains = []
@@ -34,20 +36,23 @@ def find_sub_domains(domain):
 
     return found_sub_domains
 
+
+
 def print_banner():
-   ascii_banner = pyfiglet.figlet_format("KURD", font="slant")
-   print(ascii_banner)
-   print("Create By Twanst Codes ")
-   print("Github::  https://github.com/TwanstCodess/subdomainfinder.git")
+    ascii_banner = pyfiglet.figlet_format("KURD", font="slant")
+    print(ascii_banner)
+    print(Fore.GREEN + "Create By Twanst Codes " + Style.RESET_ALL)
+    print(Fore.GREEN + "Github::  https://github.com/TwanstCodess/subdomainfinder.git" + Style.RESET_ALL)
 
 if __name__ == "__main__":
+    colorama.init()  # Initialize colorama
     print_banner()
-    domain = input("Enter Domain (e.g., example.com): ")
+    domain = input(Fore.YELLOW + "Enter Domain (e.g., example.com): " + Style.RESET_ALL)
     found_sub_domains = find_sub_domains(domain)
 
     if found_sub_domains:
-        print("\nDiscovered Subdomains:")
+        print(Fore.GREEN + "\nDiscovered Subdomains:" + Style.RESET_ALL)
         for sub_domain, status in found_sub_domains:
-            print(f"Subdomain: {sub_domain}, Status: {status}")
+            print(f"Subdomain: {Fore.YELLOW}{sub_domain}{Style.RESET_ALL}, Status: {Fore.GREEN}{status}{Style.RESET_ALL}")
     else:
-        print("No subdomains found.")
+        print(Fore.RED + "No subdomains found." + Style.RESET_ALL)
